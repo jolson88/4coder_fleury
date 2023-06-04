@@ -6,9 +6,12 @@
 // NOTE(rjf): Include language files here.
 #include "generated/4coder_fleury_lexer_jai.h"
 #include "generated/4coder_fleury_lexer_jai.cpp"
+#include "generated/4coder_fleury_lexer_odin.h"
+#include "generated/4coder_fleury_lexer_odin.cpp"
 #include "4coder_fleury_lang_cpp.cpp"
 #include "4coder_fleury_lang_jai.cpp"
 #include "4coder_fleury_lang_metadesk.cpp"
+#include "4coder_fleury_lang_odin.cpp"
 
 // NOTE(rjf): @f4_register_languages Register languages.
 function void
@@ -63,6 +66,17 @@ F4_RegisterLanguages(void)
                                 Lex_State_Cpp);
         }
     }
-}
-
+    
+    // NOTE(trp): Odin
+    {
+        F4_RegisterLanguage(S8Lit("odin"),
+                            F4_Odin_IndexFile,
+                            lex_full_input_odin_init,
+                            lex_full_input_odin_breaks,
+                            F4_Odin_PosContext,
+                            F4_Odin_Highlight,
+                            Lex_State_Odin);
+    }
+    
 #endif //FCODER_FLEURY_LANG_LIST_H
+    
